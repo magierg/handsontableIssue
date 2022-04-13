@@ -37,7 +37,8 @@ export class AppComponent implements OnInit{
         {data:'state',type:'text',readOnly:false},
         {data:'country',type:'text',readOnly:false},
         {data:'zip',type:'text',readOnly:false},
-      ]
+      ],
+      hiddenColumns:{columns:this.hiddenColumns()}
     }
 
     let temp=[];
@@ -55,6 +56,10 @@ export class AppComponent implements OnInit{
     }
     this.dataset=temp;
 
+  }
+
+  hiddenColumns(){
+    return [2];
   }
 
   changeData(){
