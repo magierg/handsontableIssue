@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Handsontable from 'handsontable';
 import { GridSettings } from 'handsontable/settings';
+declare var $:any;
 
 @Component({
   selector: 'app-root',
@@ -28,12 +29,28 @@ export class AppComponent implements OnInit{
       search:true,
       rowHeights:'24px',
       fixedColumnsLeft:2,
-      colHeaders:['First Name','Last Name','Gender','Street','City','State','Country','Zip'],
+      colHeaders:['First Name','Last Name','Gender','Street','Tooltip','City','State','Country','Zip'],
       columns:[
         {data:'firstName',type:'text',readOnly:false},
         {data:'lastName',type:'text',readOnly:false},
         {data:'gender',type:'text',readOnly:false},
         {data:'street',type:'text',readOnly:false},
+        {data:'tooltip',
+        renderer:function(instance,td,row,col,prop,value,cellProperties){
+          //Handsontable.renderers.TextRenderer.apply(this,arguments);
+          let id=value;
+          td.innerHTML=`<i class="fa fa-warning htPill htCenter" data-tooltip='tooltip' id="${id}"
+          data-placement='left' title="this is my message for the tooltip and I should have more so I can see that the mouseleave is not working when the hover over continues on the tooltip-inner.">`;
+          $('.htPill').tooltip({html:true});
+          let selector='#'+id;
+          $(selector).mouseenter(function(event:any){
+            $(event.target).tooltip('show');
+          });
+          $(selector).mouseleave(function(event:any){
+            $(event.target).tooltip('hide');
+          });
+          }
+        },
         {data:'city',type:'text',readOnly:false},
         {data:'state',type:'text',readOnly:false},
         {data:'country',type:'text',readOnly:false},
@@ -49,6 +66,7 @@ export class AppComponent implements OnInit{
         lastName:'Lopez '+Math.random(),
         gender:'Male'+Math.random(),
         street:'68484 MyStreet in this road '+Math.random(),
+        tooltip:Math.random(),
         city:'this is my city for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         state:'this is my state for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         country:'this is my country for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
@@ -72,6 +90,7 @@ export class AppComponent implements OnInit{
         lastName:'Dodson '+Math.random(),
         gender:'Female'+Math.random(),
         street:'89765 MyStreet in this road'+Math.random(),
+        tooltip:Math.random(),
         city:'this is my city for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         state:'this is my state for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         country:'this is my country for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',

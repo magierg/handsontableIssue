@@ -1,0 +1,16 @@
+::ng-deep .htPill{
+    border: navy solid 1px;
+    padding: 3px;
+    border-radius: 10px;
+    color:navy;
+    text-align: center;
+}
+
+::ng-deep .tooltip > .tooltip-inner{
+    background-color: white;
+    font-size: 14px;
+    color: navy;
+    text-align: start;
+    border: navy solid 1px;
+    padding: 10px;
+}
