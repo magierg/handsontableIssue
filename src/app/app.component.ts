@@ -43,7 +43,7 @@ export class AppComponent implements OnInit{
     }
 
     let temp=[];
-    for(let i = 0;i<1000000;i++){
+    for(let i = 0;i<10000;i++){
       temp.push({
         firstName:'Chriso '+Math.random(),
         lastName:'Lopez '+Math.random(),
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit{
   changeData(){
     this.message="data change is in progress...";
     let temp=[];
-    for(let i = 0;i<1000000;i++){
+    for(let i = 0;i<500000;i++){
       temp.push({
         firstName:'Marian '+Math.random(),
         lastName:'Dodson '+Math.random(),
