@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   hotData:Handsontable;
   hotSettings:GridSettings;
   dataset:any[]=[];
+  message='';
   
   ngOnInit(){
     this.hotSettings ={
@@ -63,6 +64,7 @@ export class AppComponent implements OnInit{
   }
 
   changeData(){
+    this.message="data change is in progress...";
     let temp=[];
     for(let i = 0;i<99000;i++){
       temp.push({
@@ -77,5 +79,6 @@ export class AppComponent implements OnInit{
       });
     }
     this.dataset=temp;
+    this.message='data change completed';
   }
 }
