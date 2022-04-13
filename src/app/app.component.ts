@@ -40,7 +40,7 @@ export class AppComponent implements OnInit{
           //Handsontable.renderers.TextRenderer.apply(this,arguments);
           let id=value;
           td.innerHTML=`<i class="fa fa-warning htPill htCenter" data-tooltip='tooltip' id="${id}"
-          data-placement='left' title="this is my message for the tooltip and I should have more so I can see that the mouseleave is not working when the hover over continues on the tooltip-inner.">`;
+          data-placement='left' title="this is is a tooltip issue, when the tooltip is still open but you scroll down, the tooltip is moved to the upper right corner of the screen.">`;
           $('.htPill').tooltip({html:true});
           let selector='#'+id;
           $(selector).mouseenter(function(event:any){
