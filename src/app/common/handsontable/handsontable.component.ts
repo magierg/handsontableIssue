@@ -22,17 +22,17 @@ export class HandsontableComponent implements OnChanges {
     this.gridsettings.data=this.dataset;
     this.hotSettings=this.gridsettings;
     this.hotData = new Handsontable(document.getElementById("hot-data")!,this.hotSettings);
-    const autoColumnSize = this.hotData.getPlugin('autoColumnSize');
-    this.hotData.updateSettings({
-      colWidths:(index)=>{
-        if(index === this.hotData.propToCol('spreadsheetItemDescription')){
-          return 350;
-        } else {
-          autoColumnSize.calculateColumnsWidth(index,0,true);
-          return autoColumnSize.getColumnWidth(index);
-        }
-      }
-    });
+    // const autoColumnSize = this.hotData.getPlugin('autoColumnSize');
+    // this.hotData.updateSettings({
+    //   colWidths:(index)=>{
+    //     if(index === this.hotData.propToCol('spreadsheetItemDescription')){
+    //       return 350;
+    //     } else {
+    //       autoColumnSize.calculateColumnsWidth(index,0,true);
+    //       return autoColumnSize.getColumnWidth(index);
+    //     }
+    //   }
+    // });
   }
 
 }
