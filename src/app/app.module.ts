@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HandsontableComponent } from './common/handsontable/handsontable.component';
+import { HotTableModule } from '@handsontable/angular';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HandsontableComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HotTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
