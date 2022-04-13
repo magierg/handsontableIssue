@@ -42,12 +42,12 @@ export class AppComponent implements OnInit{
     }
 
     let temp=[];
-    for(let i = 0;i<10000;i++){
+    for(let i = 0;i<99000;i++){
       temp.push({
-        firstName:'Chriso',
-        lastName:'Lopez',
-        gender:'Male',
-        street:'68484 MyStreet in this road',
+        firstName:'Chriso '+Math.random(),
+        lastName:'Lopez '+Math.random(),
+        gender:'Male'+Math.random(),
+        street:'68484 MyStreet in this road '+Math.random(),
         city:'this is my city for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         state:'this is my state for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         country:'this is my country for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
@@ -66,10 +66,10 @@ export class AppComponent implements OnInit{
     let temp=[];
     for(let i = 0;i<99000;i++){
       temp.push({
-        firstName:'Marian',
-        lastName:'Dodson',
-        gender:'Female',
-        street:'89765 MyStreet in this road',
+        firstName:'Marian '+Math.random(),
+        lastName:'Dodson '+Math.random(),
+        gender:'Female'+Math.random(),
+        street:'89765 MyStreet in this road'+Math.random(),
         city:'this is my city for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         state:'this is my state for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
         country:'this is my country for testing purposes, this line needs to be very long, so we can get the horizontal scrolling going.',
