@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import Handsontable from 'handsontable';
+import { countFirstRowKeys } from 'handsontable/helpers';
 import { GridSettings } from 'handsontable/settings';
 
 @Component({
@@ -11,6 +12,7 @@ export class HandsontableComponent implements OnChanges {
 
   @Input('dataSet') dataset:any[];
   @Input('gridSettings') gridsettings:GridSettings;
+  initialized=false;
 
   hotSettings:GridSettings;
   hotData:Handsontable;
@@ -18,6 +20,7 @@ export class HandsontableComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(): void {
+    console.log('ngOnChanges>dataset>',this.dataset);
     this.gridsettings.dropdownMenu={
       items:{
         "filter_by_value":{
@@ -38,21 +41,27 @@ export class HandsontableComponent implements OnChanges {
         }
       }
     };
-    this.gridsettings.data=[];
-    this.gridsettings.data=this.dataset;
     this.hotSettings=this.gridsettings;
-    this.hotData = new Handsontable(document.getElementById("hot-data")!,this.hotSettings);
-    // const autoColumnSize = this.hotData.getPlugin('autoColumnSize');
-    // this.hotData.updateSettings({
-    //   colWidths:(index)=>{
-    //     if(index === this.hotData.propToCol('spreadsheetItemDescription')){
-    //       return 350;
-    //     } else {
-    //       autoColumnSize.calculateColumnsWidth(index,0,true);
-    //       return autoColumnSize.getColumnWidth(index);
-    //     }
-    //   }
-    // });
+    if(!this.initialized){
+      console.log(this.hotSettings);
+      this.hotSettings.data = this.dataset;
+      this.hotData = new Handsontable(document.getElementById("hot-data")!,this.hotSettings);
+      this.initialized = true;
+    }
+    else
+      this.hotData.loadData(this.dataset);
+    
+    const autoColumnSize = this.hotData.getPlugin('autoColumnSize');
+    this.hotData.updateSettings({
+      colWidths:(index)=>{
+        if(index === this.hotData.propToCol('spreadsheetItemDescription')){
+          return 350;
+        } else {
+          autoColumnSize.calculateColumnsWidth(index,0,true);
+          return autoColumnSize.getColumnWidth(index);
+        }
+      }
+    });
   }
 
 }

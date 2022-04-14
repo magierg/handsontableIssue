@@ -57,7 +57,7 @@ export class AppComponent implements OnInit{
         {data:'zip',type:'text',readOnly:false},
       ],
       hiddenColumns:{columns:this.hiddenColumns()}
-    }
+    };
 
     let temp=[];
     for(let i = 0;i<500000;i++){
