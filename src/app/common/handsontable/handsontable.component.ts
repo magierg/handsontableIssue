@@ -18,6 +18,26 @@ export class HandsontableComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(): void {
+    this.gridsettings.dropdownMenu={
+      items:{
+        "filter_by_value":{
+          hidden:()=>{
+            console.log("filter_by_value>",this.hotData?.getSelectedRangeLast());
+            return [0].indexOf(this.hotData?.getSelectedRangeLast()?.to.col!)>-1;
+          }
+        },
+        "filter_by_condition":{
+          hidden:()=>{
+            return [0].indexOf(this.hotData?.getSelectedRangeLast()?.to.col!)>-1;
+          }
+        },
+        "filter_action_bar":{
+          hidden:()=>{
+            return [0].indexOf(this.hotData?.getSelectedRangeLast()?.to.col!)>-1;
+          }
+        }
+      }
+    };
     this.gridsettings.data=[];
     this.gridsettings.data=this.dataset;
     this.hotSettings=this.gridsettings;
