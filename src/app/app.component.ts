@@ -43,13 +43,19 @@ export class AppComponent implements OnInit{
           data-placement='left' title="this is is a tooltip issue, when the tooltip is still open but you scroll down, the tooltip is moved to the upper right corner of the screen.">`;
           $('.htPill').tooltip({html:true});
           let selector='#'+id;
-          $(selector).mouseenter(function(event:any){
-            $(event.target).tooltip('show');
-          });
-          $(selector).mouseleave(function(event:any){
-            $(event.target).tooltip('hide');
-          });
-          }
+          // $(selector).mouseenter(function(event:any){
+          //   $(event.target).tooltip('show');
+          // });
+          // $(selector).mouseleave(function(event:any){
+          //   $(event.target).tooltip('hide');
+          // });
+          },
+        afterOnCellMouseOver:function(e,coords,TD){
+          console.log("mouse over.");
+          },
+        afterOnCellMouseOut:function(){
+          console.log("move out.");
+        }
         },
         {data:'city',type:'text',readOnly:false},
         {data:'state',type:'text',readOnly:false},
