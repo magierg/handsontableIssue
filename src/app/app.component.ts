@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
       stretchH:'all',
       search:true,
       rowHeights:'24px',
-      fixedColumnsLeft:2,
+      fixedColumnsLeft:4,
       colHeaders:['First Name','Last Name','Gender','Street','Tooltip','City','State','Country','Zip'],
       columns:[
         {data:'firstName',type:'text',readOnly:true},
