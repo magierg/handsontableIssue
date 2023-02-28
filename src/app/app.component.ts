@@ -31,10 +31,16 @@ export class AppComponent implements OnInit{
       fixedColumnsLeft:2,
       colHeaders:['First Name','Last Name','Gender','Street','Tooltip','City','State','Country','Zip'],
       columns:[
-        {data:'firstName',type:'text',readOnly:false},
-        {data:'lastName',type:'text',readOnly:false},
-        {data:'gender',type:'text',readOnly:false},
-        {data:'street',type:'text',readOnly:false},
+        {data:'firstName',type:'text',readOnly:true},
+        {data:'lastName',type:'text',readOnly:true},
+        {data:'gender',type:'text',readOnly:true},
+        {data:'street',type:'text',readOnly:false,
+          validator: function(value,callback){
+              console.log("validator>this.row>",this.row);
+              console.log("validator>this.instance.getData>",this.instance.getData(this.row));
+              callback(true);
+          }
+        },
         {data:'tooltip',
         renderer:function(instance,td,row,col,prop,value,cellProperties){
           //Handsontable.renderers.TextRenderer.apply(this,arguments);
@@ -66,10 +72,10 @@ export class AppComponent implements OnInit{
     };
 
     let temp=[];
-    for(let i = 0;i<500000;i++){
+    for(let i = 0;i<1000;i++){
       temp.push({
-        firstName:'Chriso '+Math.random(),
-        lastName:'Lopez '+Math.random(),
+        firstName:Math.floor(10000000 + Math.random() * 9000),
+        lastName:(i<200)?'Lopez '+Math.random():'',
         gender:'Male'+Math.random(),
         street:'68484 MyStreet in this road '+Math.random(),
         tooltip:Math.random(),
