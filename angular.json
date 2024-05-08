@@ -114,5 +114,8 @@
       }
     }
   },
-  "defaultProject": "handsontableIssue"
+  "defaultProject": "handsontableIssue",
+  "cli": {
+    "analytics": false
+  }
 }
